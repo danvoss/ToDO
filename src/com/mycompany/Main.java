@@ -26,9 +26,17 @@ public class Main {
                 case "2":
                     System.out.println("Enter the number of the item you wish to toggle:");
                     String numStr = scanner.nextLine();
-                    int num = Integer.valueOf(numStr);
-                    ToDoItem tempItem = items.get(num - 1);
-                    tempItem.isDone = !tempItem.isDone;
+                    try {
+                        int num = Integer.valueOf(numStr);
+                        ToDoItem tempItem = items.get(num - 1);
+                        tempItem.isDone = !tempItem.isDone;
+                    }
+                    catch (NumberFormatException e) {
+                        System.out.println("You didn't type a number!");
+                    }
+                    catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Number isn't valid!");
+                    }
                     break;
                 case "3":
                     int i = 1;
